@@ -1,0 +1,1081 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Marina AI</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+:root {
+  --primary: #10a37f;
+  --primary-bg: #f6f8fa;
+  --primary-hover: #0e9279;
+  --border: #e5e7eb;
+  --border-strong: #d1d5db;
+  --text: #23272f;
+  --text-light: #6b7280;
+  --user-bg: #f3f4f6;
+  --bot-bg: #fff;
+  --code-bg: #f3f4f6;
+  --shadow: 0 2px 12px rgba(16,163,127,0.07);
+  --radius: 14px;
+  --avatar-bg: #e5e7eb;
+  --avatar-bot: #10a37f;
+  --avatar-user: #64748b;
+}
+body {
+  background: var(--primary-bg);
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  color: var(--text);
+  min-height: 100vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 0;
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+
+/* ====== LANDING PAGE ====== */
+.landing-container {
+  position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+  background: linear-gradient(135deg, #f7f7f7 0%, #9df9ef 100%);
+  z-index: 1000;
+  display: flex; justify-content: center; align-items: center;
+  transition: opacity 0.5s, transform 0.5s;
+}
+.hero-section {
+  display: flex; width: 95%; max-width: 1100px; gap: 40px; align-items: center;
+}
+.hero-content { flex: 1; padding: 20px; }
+.hero-title {
+  font-size: 3.2rem; font-weight: 800; margin-bottom: 18px;
+  background: linear-gradient(90deg, #51e2f5 60%, #ffa8b6 100%);
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+  letter-spacing: -1px;
+}
+.accent { color: #51e2f5; }
+.hero-subtitle { font-size: 1.1rem; color: #4a4e69; margin-bottom: 32px; line-height: 1.6; }
+.feature-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-bottom: 30px;
+}
+.feature-card {
+  background: #fff; border-radius: 16px; padding: 18px;
+  box-shadow: 0 4px 24px rgba(81,226,245,0.09);
+  border: 1px solid #e5eaf5;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.feature-card:hover {
+  transform: translateY(-4px) scale(1.02);
+  box-shadow: 0 8px 32px rgba(81,226,245,0.13);
+  border-color: #9df9ef;
+}
+.feature-icon { font-size: 2rem; margin-bottom: 12px; }
+.feature-card h3 { font-size: 1.1rem; margin-bottom: 8px; color: #51e2f5; }
+.feature-card p { font-size: 0.95rem; color: #6b7280; line-height: 1.5; }
+.get-started-btn {
+  background: linear-gradient(90deg, #51e2f5 60%, #ffa8b6 100%);
+  color: #fff; border: none; padding: 13px 28px; font-size: 1.13rem;
+  border-radius: 30px; cursor: pointer; font-weight: 600; letter-spacing: 0.5px;
+  box-shadow: 0 4px 16px rgba(81,226,245,0.13);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.get-started-btn:hover {
+  transform: scale(1.04);
+  box-shadow: 0 8px 28px rgba(255,168,182,0.14);
+}
+.hero-image { flex: 1; position: relative; height: 380px; }
+.floating-elements { position: relative; width: 100%; height: 100%; }
+.floating-card {
+  position: absolute; background: #fff; border-radius: 14px; padding: 18px;
+  display: flex; align-items: center; gap: 13px;
+  box-shadow: 0 8px 24px rgba(157,249,239,0.13);
+  border: 1px solid #edf756;
+  animation: float 6s ease-in-out infinite; animation-delay: var(--delay);
+}
+.floating-card:nth-child(1) { top: 20%; left: 10%; }
+.floating-card:nth-child(2) { top: 40%; left: 30%; }
+.floating-card:nth-child(3) { top: 60%; left: 15%; }
+.card-icon { font-size: 1.6rem; }
+.card-text { font-size: 1rem; font-weight: 500; }
+@keyframes float {
+  0%, 100% { transform: translateY(0) rotate(0deg);}
+  50% { transform: translateY(-16px) rotate(2deg);}
+}
+
+.chat-container {
+  width: 100%;
+  max-width: 100vw;
+  min-height: 100vh;
+  background: var(--primary-bg);
+  display: flex;
+  flex-direction: column;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  margin: 0 auto;
+  position: relative;
+}
+
+.app-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 28px;
+  background: var(--bot-bg);
+  border-bottom: 1px solid var(--border);
+}
+
+.logo {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: var(--primary);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.chat-box {
+  flex: 1;
+  overflow-y: auto;
+  padding: 32px 0 24px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  background: none;
+  scrollbar-width: thin;
+  scrollbar-color: var(--primary) var(--primary-bg);
+}
+.chat-box::-webkit-scrollbar { width: 6px; }
+.chat-box::-webkit-scrollbar-thumb { background: var(--primary); border-radius: 3px; }
+
+/* ====== MESSAGES ====== */
+.message-container {
+  display: flex;
+  gap: 16px;
+  align-items: flex-end;
+  max-width: 90vw;
+}
+
+.user-container {
+  align-self: flex-end;
+  flex-direction: row-reverse;
+}
+
+.message-avatar {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  background: var(--avatar-bg);
+  color: #fff;
+}
+.user-avatar {
+  background: var(--avatar-user);
+}
+.bot-avatar {
+  background: var(--avatar-bot);
+}
+
+.message-content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.message,
+.response-box {
+  max-width:  60vw;
+  padding: 18px 22px;
+  border-radius: var(--radius);
+  font-size: 1.05rem;
+  line-height: 1.7;
+  box-shadow: var(--shadow);
+  background: var(--bot-bg);
+  color: var(--text);
+  border: 1px solid var(--border);
+  margin-bottom: 2px;
+  word-break: break-word;
+  transition: box-shadow 0.2s;
+  letter-spacing: -0.01em;
+}
+
+.user-message {
+  background: var(--user-bg);
+  color: var(--text);
+  border: 1px solid var(--border-strong);
+}
+
+.bot-message,
+.response-box {
+  background: var(--bot-bg);
+  color: var(--text);
+  border: 1px solid var(--border);
+}
+
+.response-box {
+  margin: 16px 0 8px 0;
+  position: relative;
+  padding-bottom: 2.5rem;
+}
+
+.response-box p {
+  margin-bottom: 1rem;
+  color: var(--text);
+}
+
+.response-box ul,
+.response-box ol {
+  margin: 1rem 0 1rem 1.5rem;
+  padding-left: 1rem;
+}
+
+.response-box li {
+  margin-bottom: 0.5rem;
+}
+
+.copy-btn {
+  position: absolute;
+  right: 16px;
+  bottom: 14px;
+  background: var(--primary);
+  color: #fff;
+  border: none;
+  font-size: 0.92rem;
+  cursor: pointer;
+  padding: 7px 15px;
+  border-radius: 8px;
+  transition: background 0.2s;
+  font-weight: 500;
+  box-shadow: 0 2px 8px rgba(16,163,127,0.08);
+}
+.copy-btn:hover {
+  background: var(--primary-hover);
+}
+
+/* ====== CODE BLOCKS ====== */
+.code-block {
+  background: var(--code-bg);
+  border-radius: 6px;
+  padding: 1rem;
+  font-family: 'Fira Code', 'Menlo', 'Monaco', 'Consolas', monospace;
+  font-size: 0.9rem;
+  margin: 1.1rem 0;
+  overflow-x: auto;
+  border-left: 3px solid var(--primary);
+  color: #0f172a;
+  line-height: 1.5;
+}
+.code-header {
+  background: var(--primary-bg);
+  color: var(--primary);
+  font-size: 0.85rem;
+  padding: 4px 12px;
+  font-family: 'Inter', sans-serif;
+  border-radius: 6px 6px 0 0;
+  font-weight: 500;
+}
+
+.inline-code {
+  background: var(--code-bg);
+  color: #0f172a;
+  padding: 0.18em 0.38em;
+  border-radius: 3px;
+  font-family: 'Menlo', monospace;
+  font-size: 0.97em;
+}
+
+/* ====== TABLES ====== */
+.markdown-table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 1.2rem 0;
+  font-size: 0.95rem;
+  background: var(--primary-bg);
+  border-radius: 8px;
+  overflow: hidden;
+  line-height: 1.5;
+}
+.markdown-table th {
+  background: var(--bot-bg);
+  padding: 8px 12px;
+  text-align: left;
+  font-weight: 600;
+  border-bottom: 2px solid var(--primary);
+  letter-spacing: -0.01em;
+}
+.markdown-table td {
+  padding: 8px 12px;
+  border-bottom: 1px solid var(--border);
+  font-weight: 400;
+  letter-spacing: -0.01em;
+}
+
+/* ====== QUOTES & CALLOUTS ====== */
+.quote-block {
+  border-left: 3px solid var(--primary);
+  padding-left: 16px;
+  margin: 1.2rem 0;
+  color: var(--text-light);
+  font-style: italic;
+  background: var(--primary-bg);
+  border-radius: 6px;
+  font-size: 1.05rem;
+  line-height: 1.6;
+}
+
+.callout-block {
+  background: #e6f7f1;
+  border-radius: 6px;
+  padding: 12px 16px;
+  margin: 1.2rem 0;
+  display: flex;
+  align-items: flex-start;
+  color: var(--primary);
+  font-size: 1.05rem;
+  line-height: 1.6;
+}
+
+.callout-icon {
+  margin-right: 10px;
+}
+
+.callout-text {
+  font-weight: 500;
+}
+
+/* ====== HEADINGS ====== */
+.section-heading {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--text);
+  margin-top: 1.8rem;
+  margin-bottom: 1rem;
+  line-height: 1.4;
+  letter-spacing: -0.02em;
+}
+.section-divider {
+    border: 0;
+    height: 1px;
+    background-color: #e0e0e0;
+    margin: 1rem 0 1.5rem 0;
+}
+
+.subsection-heading {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--text);
+  margin-top: 1.5rem;
+  margin-bottom: 0.8rem;
+  line-height: 1.4;
+  letter-spacing: -0.01em;
+}
+
+/* Text with double asterisks */
+.important-text {
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--text);
+  line-height: 1.7;
+  letter-spacing: -0.01em;
+  display: inline;
+  margin: 0;
+  padding: 0;
+  background: none;
+  border: none;
+}
+
+.word-count {
+  font-size: 0.9rem;
+  color: var(--text-light);
+  font-weight: 400;
+  margin-left: 0.5rem;
+}
+.content-paragraph {
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: var(--text);
+  margin-bottom: 1.2rem;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+}
+.highlight-text {
+    color: #555;
+    font-weight: 600;
+}
+
+/* ====== INPUT & BUTTONS ====== */
+.search-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  background: var(--bot-bg);
+  border-radius: var(--radius);
+  margin: 18px;
+  padding: 8px 16px;
+  border: 1px solid var(--border);
+  box-shadow: 0 2px 12px rgba(16,163,127,0.06);
+}
+
+.search-input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  color: var(--text);
+  font-size: 1.1rem;
+  outline: none;
+  padding: 12px 0;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+}
+
+.search-buttons {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-left: 10px;
+}
+
+.search-button {
+  background: var(--primary-bg);
+  border: 1px solid var(--border);
+  color: var(--primary);
+  font-size: 1rem;
+  cursor: pointer;
+  padding: 7px 16px;
+  border-radius: 8px;
+  font-weight: 500;
+  transition: background 0.2s, color 0.2s;
+  letter-spacing: -0.01em;
+}
+.search-button.active,
+.search-button:hover {
+  background: var(--primary);
+  color: #fff;
+  border-color: var(--primary);
+}
+.mic-button,
+.send-button {
+  background: var(--primary-bg);
+  border: 1px solid var(--border);
+  color: var(--primary);
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+  font-size: 1.2rem;
+}
+.mic-button:hover,
+.send-button:hover {
+  background: var(--primary);
+  color: #fff;
+  border-color: var(--primary);
+}
+
+.model-select {
+  padding: 8px 14px;
+  font-size: 1rem;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--bot-bg);
+  color: var(--text);
+  margin-right: 10px;
+  cursor: pointer;
+  outline: none;
+  transition: background 0.2s, border 0.2s;
+  appearance: none;
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg fill='gray' viewBox='0 0 24 24' width='16' height='16' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M7 10l5 5 5-5z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  background-size: 14px;
+  padding-right: 34px;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+}
+.model-select:hover,
+.model-select:focus {
+  border-color: var(--primary);
+  background: var(--primary-bg);
+}
+
+/* ====== TIMESTAMP & LOADING ====== */
+.message-time {
+  font-size: 0.85rem;
+  color: var(--text-light);
+  margin-top: 3px;
+  margin-left: 3px;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+}
+
+.typing-indicator {
+  display: none;
+  align-items: center;
+  gap: 10px;
+  font-size: 14px;
+  color: var(--text-light);
+  align-self: flex-start;
+  padding: 10px;
+}
+
+.loading-animation {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.loading-dot {
+  width: 7px;
+  height: 7px;
+  background: var(--primary);
+  border-radius: 50%;
+  animation: pulse 1.3s infinite;
+}
+.loading-dot:nth-child(2) { animation-delay: 0.15s; }
+.loading-dot:nth-child(3) { animation-delay: 0.3s; }
+@keyframes pulse {
+  0%,100%{transform:scale(0.8);opacity:0.5;}
+  50%{transform:scale(1.2);opacity:1;}
+}
+
+/* ====== RESPONSIVE ====== */
+@media (max-width: 900px) {
+  .chat-container { max-width: 100vw; }
+  .chat-box { padding: 18px 0 12px 0; }
+}
+@media (max-width: 700px) {
+  .chat-container { min-height: 100vh; border-radius: 0; }
+  .chat-box { padding: 10px 2vw 10px 2vw; }
+  .app-header, .search-container { padding-left: 2vw; padding-right: 2vw; }
+}
+
+/* Typography */
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+/* Main headings */
+.section-heading {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--text);
+  margin-top: 1.8rem;
+  margin-bottom: 1rem;
+  line-height: 1.4;
+  letter-spacing: -0.02em;
+}
+
+/* Subheadings and important text */
+.subsection-heading,
+.important-text {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--text);
+  margin-top: 1.5rem;
+  margin-bottom: 0.8rem;
+  line-height: 1.4;
+  letter-spacing: -0.01em;
+}
+
+/* Normal text styling */
+.message,
+.response-box,
+.content-paragraph {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-size: 1.05rem;
+  line-height: 1.7;
+  letter-spacing: -0.01em;
+  font-weight: 400;
+  color: var(--text);
+}
+
+/* Lists */
+.list-item,
+.numbered-item {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-size: 1.05rem;
+  line-height: 1.6;
+  font-weight: 400;
+  color: var(--text);
+}
+
+/* Tables */
+.markdown-table {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.markdown-table th {
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+.markdown-table td {
+  font-weight: 400;
+  letter-spacing: -0.01em;
+}
+
+/* Quotes and callouts */
+.quote-block {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-size: 1.05rem;
+  line-height: 1.6;
+  font-style: italic;
+  color: var(--text-light);
+}
+
+.callout-block {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-size: 1.05rem;
+  line-height: 1.6;
+}
+
+/* Input and buttons */
+.search-input {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-size: 1.1rem;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+}
+
+.search-button {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-size: 1rem;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+}
+
+.model-select {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-size: 1rem;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+}
+
+/* Message styling */
+.message-time {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+}
+
+/* Add font loading */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+    </style>
+</head>
+<body>
+    <!-- Landing Page -->
+    <div class="landing-container" id="landingPage">
+        <div class="hero-section">
+            <div class="hero-content">
+                <h1 class="hero-title">Marina <span class="accent">AI</span></h1>
+                <p class="hero-subtitle">Your intelligent research assistant powered by multiple AI models</p>
+                <div class="feature-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">🔍</div>
+                        <h3>Intelligent Search</h3>
+                        <p>Get instant answers from the web with context-aware search capabilities</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">🧠</div>
+                        <h3>Deep Research</h3>
+                        <p>Generate comprehensive reports and analysis on complex topics</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">🤖</div>
+                        <h3>Multiple Models</h3>
+                        <p>Choose from OpenAI, AWS Bedrock, or OpenRouter models for your needs</p>
+                    </div>
+                </div>
+                <button class="get-started-btn" onclick="startChat()">Get Started</button>
+            </div>
+            <div class="hero-image">
+                <div class="floating-elements">
+                    <div class="floating-card" style="--delay: 0s">
+                        <div class="card-icon">🌐</div>
+                        <div class="card-text">Web Search</div>
+                    </div>
+                    <div class="floating-card" style="--delay: 1s">
+                        <div class="card-icon">📊</div>
+                        <div class="card-text">Data Analysis</div>
+                    </div>
+                    <div class="floating-card" style="--delay: 2s">
+                        <div class="card-icon">📝</div>
+                        <div class="card-text">Content Generation</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Chat Interface -->
+    <div class="chat-container" id="chatContainer">
+        <div class="app-header">
+            <div class="logo">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="#4CAF50" stroke-width="2"/>
+                    <path d="M2 17L12 22L22 17" stroke="#4CAF50" stroke-width="2"/>
+                    <path d="M2 12L12 17L22 12" stroke="#4CAF50" stroke-width="2"/>
+                </svg>
+                <span>Marina AI</span>
+            </div>
+        </div>
+        
+        <div class="chat-box" id="chatBox">
+            <div class="typing-indicator" id="typingIndicator">
+                <div class="loading-animation">
+                    <div class="loading-dot"></div>
+                    <div class="loading-dot"></div>
+                    <div class="loading-dot"></div>
+                </div>
+                <span>Processing your request...</span>
+            </div>
+        </div>
+        
+        <div class="search-container">
+            <input type="text" id="searchInput" class="search-input" placeholder="Ask anything..." onkeydown="handleEnter(event)">
+            <select id="modelSelect" class="model-select">
+                <option value="openai">GPT-3.5 : OpenAI</option>
+                <option value="bedrock">claude-3-7-sonnet : AWS Bedrock</option>
+                <option value="openrouter">Deepseek : OpenRouter</option>
+            </select>
+            <div class="search-buttons">
+                <button class="search-button active" id="searchBtn" onclick="setAction('search')">
+                    <span>🌍</span> Search
+                </button>
+                <button class="search-button" id="reasonBtn" onclick="setAction('reason')">
+                    <span>💡</span> Deep Research
+                </button>
+                <button class="mic-button" onclick="startVoiceRecognition()">🎤</button>
+                <button class="send-button" onclick="sendMessage()">➡️</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let action = "search"; 
+
+        function setAction(selectedAction) {
+            action = selectedAction;
+            document.getElementById("searchBtn").classList.toggle("active", selectedAction === "search");
+            document.getElementById("reasonBtn").classList.toggle("active", selectedAction === "reason");
+        }
+
+        function handleEnter(event) {
+            if (event.key === "Enter") {
+                sendMessage();
+            }
+        }
+
+        function startChat() {
+    const landingPage = document.getElementById('landingPage');
+    const chatContainer = document.querySelector('.chat-container');
+ 
+    landingPage.style.opacity = '0';
+    landingPage.style.transform = 'translateY(-20px)';
+    
+    setTimeout(() => {
+        
+        landingPage.style.display = 'none';
+    
+        chatContainer.style.display = 'flex';
+        chatContainer.style.flexDirection = 'column';
+
+        void chatContainer.offsetWidth;
+      
+        chatContainer.style.opacity = '1';
+        chatContainer.style.transform = 'translateY(0)';
+        addBotMessage("Hello! . How can I assist you today?");
+    }, 500);
+}
+                
+                
+        function startVoiceRecognition() {
+            if ('webkitSpeechRecognition' in window) {
+                const recognition = new webkitSpeechRecognition();
+                recognition.continuous = false;
+                recognition.lang = 'en-US';
+                
+                const micButton = document.querySelector('.mic-button');
+                micButton.innerHTML = '🔴';
+                micButton.style.background = 'rgba(255, 82, 82, 0.2)';
+                
+                recognition.onresult = function(event) {
+                    const transcript = event.results[0][0].transcript;
+                    document.getElementById("searchInput").value = transcript;
+                    
+                    micButton.innerHTML = '✓';
+                    micButton.style.background = 'rgba(76, 175, 80, 0.2)';
+                    setTimeout(() => {
+                        micButton.innerHTML = '🎤';
+                        micButton.style.background = 'rgba(255, 255, 255, 0.1)';
+                    }, 1500);
+                };
+                
+                recognition.onerror = function() {
+                    micButton.innerHTML = '🎤';
+                    micButton.style.background = 'rgba(255, 255, 255, 0.1)';
+                };
+                
+                recognition.onend = function() {
+                    if (micButton.innerHTML !== '✓') {
+                        micButton.innerHTML = '🎤';
+                        micButton.style.background = 'rgba(255, 255, 255, 0.1)';
+                    }
+                };
+                
+                recognition.start();
+            } else {
+                alert("Speech recognition is not supported in your browser.");
+            }
+        }
+        function formatResearchResponse(text) {
+    // First, handle code blocks
+    text = text.replace(/```([a-z]*)\n([\s\S]*?)```/g, (match, language, code) => {
+        return `<div class="code-block"><div class="code-header">${language || 'code'}</div><pre><code>${code.replace(/</g, '&lt;').replace(/>/g, '&gt;')}</code></pre></div>`;
+    });
+    
+    // Handle main headings
+    text = text.replace(/^#{1,2}\s*([^\n]+)/gm, (match, title) => {
+        return `<div class="section-heading"><strong>${title.trim()}</strong></div>\n<hr class="section-divider">`;
+    });
+    
+    // Handle subheadings and important text
+    text = text.replace(/^#{3,6}\s*([^\n]+)/gm, (match, title) => {
+        return `<div class="subsection-heading"><strong>${title.trim()}</strong></div>\n<hr class="section-divider">`;
+    });
+    
+    // Handle important text in double asterisks - updated regex
+    text = text.replace(/\*\*([^*]+)\*\*/g, '<strong class="important-text">$1</strong>');
+    
+    // Handle tables
+    text = text.replace(
+        /^\|(.+)\|\r?\n\|[\-:\s|]+\|\r?\n((^\|.+\|\r?\n)+)/gm,
+        (match, header, rows) => {
+            const headers = header.split('|').filter(cell => cell.trim() !== '').map(cell => `<th>${cell.trim()}</th>`).join('');
+            const processedRows = rows.split('\n').filter(row => row.trim() !== '' && row.includes('|')).map(row => {
+                const cells = row.split('|').filter(cell => cell.trim() !== '').map(cell => `<td>${cell.trim()}</td>`).join('');
+                return `<tr>${cells}</tr>`;
+            }).join('');
+            return `<div class="table-container"><table class="markdown-table"><thead><tr>${headers}</tr></thead><tbody>${processedRows}</tbody></table></div>`;
+        }
+    );
+    
+    // Handle lists
+    text = text.replace(/^- ([^\n]+)/gm, '<li class="list-item">$1</li>');
+    text = text.replace(/^(\d+)\. ([^\n]+)/gm, '<li class="numbered-item"><span class="number">$1.</span> $2</li>');
+    
+    // Wrap lists
+    let lines = text.split('\n');
+    let inList = false, isOrdered = false, formattedText = '';
+    for (let i = 0; i < lines.length; i++) {
+        let line = lines[i];
+        if (line.match(/^<li class="numbered-item">/)) {
+            if (!inList) { formattedText += '<ol class="ordered-list">'; inList = true; isOrdered = true; }
+            formattedText += line;
+        } else if (line.match(/^<li class="list-item">/)) {
+            if (!inList) { formattedText += '<ul class="unordered-list">'; inList = true; isOrdered = false; }
+            formattedText += line;
+        } else {
+            if (inList) { formattedText += isOrdered ? '</ol>' : '</ul>'; inList = false; }
+            formattedText += line + '\n';
+        }
+    }
+    if (inList) { formattedText += isOrdered ? '</ol>' : '</ul>'; }
+    
+    // Handle block quotes
+    formattedText = formattedText.replace(/^>\s+([^\n]+)/gm, '<div class="quote-block">$1</div>');
+    
+    // Handle callouts
+    formattedText = formattedText.replace(/^(?:Note|Important|Warning|Tip):\s+([^\n]+)/gim, 
+        (match, content) => {
+            const icon = 
+                match.toLowerCase().startsWith('warning') ? '⚠️' : 
+                match.toLowerCase().startsWith('tip') ? '💡' : 
+                match.toLowerCase().startsWith('important') ? '❗' : 'ℹ️';
+            
+            return `<div class="callout-block"><span class="callout-icon">${icon}</span><span class="callout-text">${content}</span></div>`;
+        }
+    );
+    
+    // Convert line breaks to paragraphs
+    let paragraphs = [], currentParagraph = "";
+    formattedText.split('\n').forEach(line => {
+        if (
+            line.trim() === '' ||
+            line.startsWith('<div class="section-heading">') ||
+            line.startsWith('<div class="subsection-heading">') ||
+            line.startsWith('<hr') ||
+            line.startsWith('<ul') || line.startsWith('</ul>') ||
+            line.startsWith('<ol') || line.startsWith('</ol>') ||
+            line.startsWith('<li') ||
+            line.startsWith('<div class="code-block">') ||
+            line.startsWith('<div class="quote-block">') ||
+            line.startsWith('<div class="table-container">') ||
+            line.startsWith('<div class="callout-block">')
+        ) {
+            if (currentParagraph.trim() !== "") {
+                paragraphs.push(`<p class="content-paragraph">${currentParagraph.trim()}</p>`);
+                currentParagraph = "";
+            }
+            if (line.trim() !== "") paragraphs.push(line);
+        } else {
+            if (currentParagraph && line.trim()) {
+                currentParagraph += " " + line.trim();
+            } else if (line.trim()) {
+                currentParagraph = line.trim();
+            }
+        }
+    });
+    if (currentParagraph.trim() !== "") paragraphs.push(`<p class="content-paragraph">${currentParagraph.trim()}</p>`);
+    
+    return paragraphs.join('\n');
+}
+
+
+
+      
+
+        function addUserMessage(message) {
+            const chatBox = document.getElementById("chatBox");
+            const userMsg = document.createElement("div");
+            userMsg.classList.add("message-container", "user-container");
+            userMsg.innerHTML = `
+                <div class="message-avatar user-avatar">👤</div>
+                <div class="message-content">
+                    <div class="message user-message">${message}</div>
+                    <div class="message-time">${new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}</div>
+                </div>
+            `;
+            chatBox.appendChild(userMsg);
+            chatBox.scrollTop = chatBox.scrollHeight;
+        }
+
+        function addBotMessage(message, isResearchOrSearch = false) {
+    const chatBox = document.getElementById("chatBox");
+    const botMsgContainer = document.createElement("div");
+    botMsgContainer.classList.add("message-container");
+
+    const botAvatar = document.createElement("div");
+    botAvatar.classList.add("message-avatar", "bot-avatar");
+    botAvatar.innerHTML = "🤖";
+
+    const botContent = document.createElement("div");
+    botContent.classList.add("message-content");
+
+    const botResponse = document.createElement("div");
+
+    // Apply enhanced UI for both search and research
+    if (isResearchOrSearch) {
+        botResponse.classList.add("response-box");
+        const formattedResponse = formatResearchResponse(message);
+        botResponse.innerHTML = formattedResponse;
+
+
+        // Add copy button
+        const copyBtn = document.createElement("button");
+        copyBtn.classList.add("copy-btn");
+        copyBtn.innerText = "Copy to clipboard";
+        copyBtn.onclick = () => {
+            navigator.clipboard.writeText(message);
+            copyBtn.innerText = "Copied!";
+            setTimeout(() => {
+                copyBtn.innerText = "Copy to clipboard";
+            }, 2000);
+        };
+        botResponse.appendChild(copyBtn);
+    } else {
+        botResponse.classList.add("message", "bot-message");
+        botResponse.innerText = message;
+    }
+
+    const messageTime = document.createElement("div");
+    messageTime.classList.add("message-time");
+    messageTime.innerText = new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
+
+    botContent.appendChild(botResponse);
+    botContent.appendChild(messageTime);
+
+    botMsgContainer.appendChild(botAvatar);
+    botMsgContainer.appendChild(botContent);
+
+    chatBox.appendChild(botMsgContainer);
+    chatBox.scrollTop = chatBox.scrollHeight;
+}
+
+
+        function sendMessage() {
+            const query = document.getElementById("searchInput").value.trim();
+            const model = document.getElementById("modelSelect").value;
+            const typingIndicator = document.getElementById("typingIndicator");
+
+            if (query === "") return;
+
+            // Add user message to chat
+            addUserMessage(query);
+            document.getElementById("searchInput").value = "";
+            
+            // Show typing indicator
+            typingIndicator.style.display = "flex"; 
+            document.getElementById("chatBox").scrollTop = document.getElementById("chatBox").scrollHeight;
+
+            // Determine endpoint based on selected action
+            const endpoint = action === "search" ? "/search" : "/reason";
+
+            const payload = action === "search"
+            ? { query: query, model: model }
+            : { query: query };
+            console.log("Sending payload:", JSON.stringify(payload));
+            // Make API request
+            fetch(`http://127.0.0.1:5000${endpoint}`, {
+                method: "POST",
+                headers: { "Content-Type": "application/json" , "Accept": "application/json"},
+                body: JSON.stringify(payload)
+            })
+            .then(response => {
+              if (!response.ok) {
+                throw new Error(`HTTP error! Status: ${response.status}`);
+              }
+              return response.json();
+            })
+            .then(data => {
+                typingIndicator.style.display = "none";
+                
+                if (data.error) {
+                    addBotMessage("Sorry, there was an error processing your request: " + data.error);
+                } else {
+                    // Add bot response to chat
+                    addBotMessage(data.response, action === "reason" || action === "search");
+                }
+            })
+            .catch(error => {
+                typingIndicator.style.display = "none";
+                addBotMessage("Sorry, there was an error connecting to the server. Please try again later.");
+                console.error("Error:", error);
+            });
+        }
+
+        // Initialize the page
+        document.addEventListener('DOMContentLoaded', function() {
+            const chatContainer = document.querySelector('.chat-container');
+            chatContainer.style.opacity = '0';
+            chatContainer.style.transform = 'translateY(20px)';
+        });
+    </script>
+</body>
+</html>
+                   

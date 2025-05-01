@@ -1,0 +1,28 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --primary: #10a37f;
+  --primary-bg: #f6f8fa;
+  --primary-hover: #0e9279;
+  --border: #e5e7eb;
+  --border-strong: #d1d5db;
+  --text: #23272f;
+  --text-light: #6b7280;
+  --user-bg: #f3f4f6;
+  --bot-bg: #fff;
+  --code-bg: #f3f4f6;
+  --shadow: 0 2px 12px rgba(16,163,127,0.07);
+  --radius: 14px;
+  --avatar-bg: #e5e7eb;
+  --avatar-bot: #10a37f;
+  --avatar-user: #64748b;
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+} 
