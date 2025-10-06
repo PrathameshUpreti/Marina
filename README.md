@@ -1,249 +1,451 @@
 # Marina AI - Intelligent Research Assistant
 
-<div style="font-family: 'Inter', sans-serif; max-width: 800px; margin: 0 auto; padding: 20px;">
+<div align="center">
 
-<div style="background: linear-gradient(135deg, #f7f7f7 0%, #9df9ef 100%); padding: 30px; border-radius: 16px; margin-bottom: 30px;">
-  <h1 style="font-family: 'Inter', sans-serif; font-size: 2.5rem; font-weight: 800; margin-bottom: 20px; background: linear-gradient(90deg, #51e2f5 60%, #ffa8b6 100%); -webkit-background-clip: text; background-clip: text; color: transparent;">Marina AI</h1>
-  <p style="font-size: 1.2rem; color: #4a4e69; line-height: 1.6;">A powerful research assistant that leverages multiple AI models to provide intelligent search capabilities and deep research analysis. It offers a modern, user-friendly interface with features like web search, content generation, and data analysis.</p>
+![Marina AI Banner](./assets/banner.png)
+
+
+[![Python](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/downloads/)
+[![Next.js](https://img.shields.io/badge/next.js-13+-black.svg)](https://nextjs.org/)
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](CONTRIBUTING.md)
+
+**A powerful research assistant that leverages multiple AI models to provide intelligent search capabilities and deep research analysis.**
+
+[Features](#-features) • [Demo](#-demo) • [Quick Start](#-quick-start) • [Documentation](#-documentation) • [Roadmap](#-roadmap)
+
 </div>
 
-<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; margin-bottom: 30px;">
-  <div style="background: #fff; padding: 20px; border-radius: 12px; box-shadow: 0 4px 24px rgba(81,226,245,0.09); border: 1px solid #e5eaf5; transition: transform 0.2s;">
-    <h3 style="color: #51e2f5; margin-bottom: 10px;">🔍 Intelligent Search</h3>
-    <p>Get instant answers from the web with context-aware search capabilities</p>
-  </div>
-  <div style="background: #fff; padding: 20px; border-radius: 12px; box-shadow: 0 4px 24px rgba(81,226,245,0.09); border: 1px solid #e5eaf5; transition: transform 0.2s;">
-    <h3 style="color: #51e2f5; margin-bottom: 10px;">🧠 Deep Research</h3>
-    <p>Generate comprehensive reports and analysis on complex topics</p>
-  </div>
-  <div style="background: #fff; padding: 20px; border-radius: 12px; box-shadow: 0 4px 24px rgba(81,226,245,0.09); border: 1px solid #e5eaf5; transition: transform 0.2s;">
-    <h3 style="color: #51e2f5; margin-bottom: 10px;">🤖 Multiple AI Models</h3>
-    <ul style="list-style: none; padding: 0;">
-      <li>• GPT-3.5 (OpenAI)</li>
-      <li>• Claude-3-7-sonnet (AWS Bedrock)</li>
-      <li>• Deepseek (OpenRouter)</li>
-    </ul>
-  </div>
+---
+
+## 📹 Demo
+
+### Video Walkthrough
+
+<div align="center">
+
+[![Marina AI Demo](assets/thumbnail.png)](assets/login.mp4)
+
+*Click to watch: Complete walkthrough of Marina AI features*
+
 </div>
 
-<div style="background: #fff; padding: 30px; border-radius: 16px; box-shadow: 0 4px 24px rgba(81,226,245,0.09); margin-bottom: 30px;">
-  <h2 style="color: #51e2f5; margin-bottom: 20px;">🚀 Quick Start</h2>
-  
-  <div style="background: #f6f8fa; padding: 20px; border-radius: 12px; margin-bottom: 20px;">
-    <h3 style="color: #51e2f5; margin-bottom: 10px;">Prerequisites</h3>
-    <ul style="list-style: none; padding: 0;">
-      <li>• Python 3.8 or higher</li>
-      <li>• Node.js and npm (for development)</li>
-      <li>• Web browser with JavaScript enabled</li>
-      <li>• Internet connection for AI model access</li>
-    </ul>
-  </div>
+**Key Features Demonstrated:**
+- 🔍 Intelligent web search with context-aware results
+- 🧠 Deep research mode for comprehensive analysis
+- 🎤 Voice command functionality
+- 🤖 Multi-model AI integration
+- 💬 Real-time chat interface
 
-  <div style="background: #f6f8fa; padding: 20px; border-radius: 12px;">
-    <h3 style="color: #51e2f5; margin-bottom: 10px;">Installation</h3>
-    <pre style="background: #1e1e1e; color: #fff; padding: 15px; border-radius: 8px; overflow-x: auto;">
-      <code>git clone https://github.com/yourusername/marina-ai.git
-cd marina-ai
-pip install -r requirements.txt
-cp .env.example .env
-python app.py</code>
-    </pre>
-  </div>
+---
+
+## 📸 Screenshots
+
+### Main Interface
+
+<div align="center">
+
+![Main Chat Interface](assets/thumbnail.png)
+*Clean, modern chat interface with AI-powered responses*
+
 </div>
 
-<div style="background: #fff; padding: 30px; border-radius: 16px; box-shadow: 0 4px 24px rgba(81,226,245,0.09); margin-bottom: 30px;">
-  <h2 style="color: #51e2f5; margin-bottom: 20px;">📚 Usage Guide</h2>
-  
-  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px;">
-    <div style="background: #f6f8fa; padding: 20px; border-radius: 12px;">
-      <h3 style="color: #51e2f5; margin-bottom: 10px;">🔍 Basic Search</h3>
-      <ol style="padding-left: 20px;">
-        <li>Type your query</li>
-        <li>Press Enter or click send</li>
-        <li>Get instant answers</li>
-      </ol>
-    </div>
+### Deep Research Mode
+
+<div align="center">
+
+<img src="assets/1.png" alt="Deep Research" width="800"/>
+
+*Comprehensive research reports with source citations*
+
+</div>
+
+### Search Results
+
+<div align="center">
+
+<table>
+  <tr>
+    <td><img src="assets/1.png" alt="Search Results" width="400"/></td>
+    <td><img src="assets/sql.png" alt="AI Response" width="400"/></td>
+  </tr>
+  <tr>
+    <td align="center"><em>Instant search results</em></td>
+    <td align="center"><em>AI-generated insights</em></td>
+  </tr>
+</table>
+
+</div>
+
+### Mobile Experience
+
+<div align="center">
+
+<table>
+  <tr>
+    <td><img src="assets/mv.png" alt="Mobile Home" width="250"/></td>
+    <td><img src="assets/ms.png" alt="Mobile Chat" width="250"/></td>
     
-    <div style="background: #f6f8fa; padding: 20px; border-radius: 12px;">
-      <h3 style="color: #51e2f5; margin-bottom: 10px;">🧠 Deep Research</h3>
-      <ol style="padding-left: 20px;">
-        <li>Click "Deep Research"</li>
-        <li>Enter your topic</li>
-        <li>Get analysis</li>
-      </ol>
-    </div>
-    
-    <div style="background: #f6f8fa; padding: 20px; border-radius: 12px;">
-      <h3 style="color: #51e2f5; margin-bottom: 10px;">🎤 Voice Commands</h3>
-      <ol style="padding-left: 20px;">
-        <li>Click microphone</li>
-        <li>Speak your query</li>
-        <li>Get results</li>
-      </ol>
-    </div>
-  </div>
+  </tr>
+  <tr>
+    <td align="center"><em>Home screen</em></td>
+    <td align="center"><em>Chat interface</em></td>
+   
+  </tr>
+</table>
+
 </div>
 
-<div style="background: #fff; padding: 30px; border-radius: 16px; box-shadow: 0 4px 24px rgba(81,226,245,0.09); margin-bottom: 30px;">
-  <h2 style="color: #51e2f5; margin-bottom: 20px;">📁 Project Structure</h2>
-  <pre style="background: #f6f8fa; padding: 20px; border-radius: 12px; overflow-x: auto;">
-    <code>marina-ai/
-├── webui/
-│   ├── app.html          # Main web interface
-│   └── modern-ui.html    # Alternative UI design
-├── agent/
-│   ├── prompt.py         # AI prompt templates
-│   └── research.py       # Research functionality
-├── app.py                # Main application
-├── requirements.txt      # Python dependencies
-└── README.md            # Project documentation</code>
-  </pre>
-</div>
+---
 
-<div style="background: #fff; padding: 30px; border-radius: 16px; box-shadow: 0 4px 24px rgba(81,226,245,0.09); margin-bottom: 30px;">
-  <h2 style="color: #51e2f5; margin-bottom: 20px;">🚀 Running the Application</h2>
-  
-  <div style="background: #f6f8fa; padding: 20px; border-radius: 12px; margin-bottom: 20px;">
-    <h3 style="color: #51e2f5; margin-bottom: 10px;">HTML Version</h3>
-    <p>To run the HTML version of the application:</p>
-    <pre style="background: #1e1e1e; color: #fff; padding: 15px; border-radius: 8px; overflow-x: auto;">
-      <code># Clone the repository
-git clone https://github.com/yourusername/marina-ai.git
+## ✨ Features
+
+<table>
+<tr>
+<td width="50%">
+
+### 🔍 Intelligent Search
+- Context-aware web search
+- Multi-source aggregation via SearXNG
+- Privacy-respecting search engine
+- Real-time result processing
+
+</td>
+<td width="50%">
+
+### 🧠 Deep Research
+- Comprehensive topic analysis
+- Multi-perspective insights
+- Automated report generation
+- Source citation tracking
+
+</td>
+</tr>
+<tr>
+<td width="50%">
+
+### 🤖 Multiple AI Models
+- **GPT-3.5** (OpenAI) - General purpose
+- **Claude-3-7-sonnet** (AWS Bedrock) - Advanced reasoning
+- **Deepseek** (OpenRouter) - Specialized research
+- Easy model switching
+
+</td>
+<td width="50%">
+
+### 🎨 Modern UI/UX
+- Clean, intuitive interface
+- Dark/Light mode support
+- Responsive design
+- Voice command integration
+- Real-time streaming responses
+
+</td>
+</tr>
+</table>
+
+---
+
+## 🚀 Quick Start
+
+### Prerequisites
+
+- Python 3.8 or higher
+- Node.js 16+ and npm (for Next.js version)
+- Web browser with JavaScript enabled
+- Internet connection for AI model access
+
+### Installation
+
+#### Option 1: HTML Version (Flask Backend)
+
+```bash
+# Clone the repository
+git clone https://github.com/PrathameshUpreti/Marina.git
 cd marina-ai
 
 # Install Python dependencies
 pip install -r requirements.txt
 
-# Copy environment variables
+# Set up environment variables
 cp .env.example .env
+# Edit .env and add your API keys
 
 # Run the application
 python app.py
 
-# Access the application at http://localhost:5000</code>
-    </pre>
-  </div>
+# Access at http://localhost:5000
+```
 
-  <div style="background: #f6f8fa; padding: 20px; border-radius: 12px; margin-bottom: 20px;">
-    <h3 style="color: #51e2f5; margin-bottom: 10px;">Next.js Version</h3>
-    <p>To run the Next.js version of the application:</p>
-    <pre style="background: #1e1e1e; color: #fff; padding: 15px; border-radius: 8px; overflow-x: auto;">
-      <code># Navigate to the Next.js directory
+#### Option 2: Next.js Version
+
+```bash
+# Navigate to Next.js directory
 cd nextjs
 
 # Install dependencies
 npm install
 
-# Start the development server
+# Set up environment variables
+cp .env.example .env.local
+# Edit .env.local and add your API keys
+
+# Start development server
 npm run dev
 
-# Access the application at http://localhost:3000</code>
-    </pre>
-  </div>
-</div>
+# Access at http://localhost:3000
+```
 
-<div style="background: #fff; padding: 30px; border-radius: 16px; box-shadow: 0 4px 24px rgba(81,226,245,0.09); margin-bottom: 30px;">
-  <h2 style="color: #51e2f5; margin-bottom: 20px;">🔧 Key Components</h2>
-  
-  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px;">
-    <div style="background: #f6f8fa; padding: 20px; border-radius: 12px;">
-      <h3 style="color: #51e2f5; margin-bottom: 10px;">SearXNG Integration</h3>
-      <p>SearXNG is a privacy-respecting metasearch engine that aggregates results from multiple search engines. In Marina AI, it's used to:</p>
-      <ul style="list-style: none; padding: 0;">
-        <li>• Provide unbiased search results</li>
-        <li>• Respect user privacy</li>
-        <li>• Aggregate results from multiple sources</li>
-      </ul>
-    </div>
-    
-    <div style="background: #f6f8fa; padding: 20px; border-radius: 12px;">
-      <h3 style="color: #51e2f5; margin-bottom: 10px;">Beautiful UI Components</h3>
-      <p>The application uses modern UI components including:</p>
-      <ul style="list-style: none; padding: 0;">
-        <li>• Tailwind CSS for styling</li>
-        <li>• React components for Next.js version</li>
-        <li>• Responsive design for all devices</li>
-        <li>• Dark/Light mode support</li>
-      </ul>
-    </div>
-    
-    <div style="background: #f6f8fa; padding: 20px; border-radius: 12px;">
-      <h3 style="color: #51e2f5; margin-bottom: 10px;">AI Models</h3>
-      <p>The application integrates multiple AI models:</p>
-      <ul style="list-style: none; padding: 0;">
-        <li>• GPT-3.5 (OpenAI) - General purpose AI</li>
-        <li>• Claude-3-7-sonnet (AWS Bedrock) - Advanced reasoning</li>
-        <li>• Deepseek (OpenRouter) - Specialized research</li>
-      </ul>
-    </div>
-  </div>
-</div>
+### Environment Variables
 
-<div style="background: #fff; padding: 30px; border-radius: 16px; box-shadow: 0 4px 24px rgba(81,226,245,0.09); margin-bottom: 30px;">
-  <h2 style="color: #51e2f5; margin-bottom: 20px;">🔮 Roadmap</h2>
-  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px;">
-    <div style="background: #f6f8fa; padding: 15px; border-radius: 12px; text-align: center;">
-      <span style="color: #51e2f5; font-size: 1.5rem;">🤖</span>
-      <p>More AI Models</p>
-    </div>
-    <div style="background: #f6f8fa; padding: 15px; border-radius: 12px; text-align: center;">
-      <span style="color: #51e2f5; font-size: 1.5rem;">📁</span>
-      <p>File Upload</p>
-    </div>
-    <div style="background: #f6f8fa; padding: 15px; border-radius: 12px; text-align: center;">
-      <span style="color: #51e2f5; font-size: 1.5rem;">👥</span>
-      <p>Collaboration</p>
-    </div>
-    <div style="background: #f6f8fa; padding: 15px; border-radius: 12px; text-align: center;">
-      <span style="color: #51e2f5; font-size: 1.5rem;">🎤</span>
-      <p>Voice Recognition</p>
-    </div>
-  </div>
-</div>
+Create a `.env` file with the following:
 
-<div style="text-align: center; padding: 20px; color: #6b7280;">
-  <p>Made with ❤️ by the Marina AI Team</p>
-  <p>© 2024 Marina AI. All rights reserved.</p>
-</div>
+```env
+# OpenAI Configuration
+OPENAI_API_KEY=your_openai_api_key
 
-</div>
+# AWS Bedrock Configuration
+AWS_ACCESS_KEY_ID=your_aws_access_key
+AWS_SECRET_ACCESS_KEY=your_aws_secret_key
+AWS_REGION=us-east-1
 
-<style>
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+# OpenRouter Configuration
+OPENROUTER_API_KEY=your_openrouter_api_key
 
-body {
-  font-family: 'Inter', sans-serif;
-  background: #f7f7f8;
-  color: #23272f;
-  line-height: 1.6;
+# SearXNG Configuration
+SEARXNG_URL=http://localhost:8080
+
+# Application Settings
+FLASK_SECRET_KEY=your_secret_key
+DEBUG=False
+```
+
+---
+
+## 📁 Project Structure
+
+```
+marina-ai/
+├── assets/
+│   ├── banner.png
+│   ├── video-thumbnail.png
+│   ├── demo-video.mp4
+│   └── screenshots/
+│       ├── main-interface.png
+│       ├── deep-research.png
+│       ├── search-results.png
+│       ├── ai-response.png
+│       ├── mobile-1.png
+│       ├── mobile-2.png
+│       └── mobile-3.png
+├── webui/
+│   ├── app.html              # Main web interface
+│   └── modern-ui.html        # Alternative UI design
+├── nextjs/                   # Next.js version
+│   ├── pages/
+│   ├── components/
+│   ├── styles/
+│   └── public/
+├── agent/
+│   ├── prompt.py             # AI prompt templates
+│   └── research.py           # Research functionality
+├── app.py                    # Main Flask application
+├── requirements.txt          # Python dependencies
+├── .env.example              # Environment variables template
+├── README.md                 # This file
+└── LICENSE                   # MIT License
+```
+
+---
+
+## 📚 Usage Guide
+
+### Basic Search
+
+1. **Type your query** in the chat input
+2. **Press Enter** or click the send button
+3. **Receive instant answers** with AI-powered insights
+
+![Basic Search](assets/search.mp4)
+
+### Deep Research Mode
+
+1. **Click "Deep Research"** button in the interface
+2. **Enter your research topic** in detail
+3. **Wait for comprehensive analysis** (may take 5 min)
+4. **Review the generated report** with citations
+
+
+
+### Voice Commands
+
+1. **Click the microphone icon** in the input area
+2. **Speak your query** clearly
+3. **Review transcription** and confirm
+4. **Get AI-powered responses**
+
+
+
+### Switching AI Models
+
+1. **Open settings panel** (gear icon)
+2. **Select your preferred model**:
+   - GPT-3.5 for general queries
+   - Claude for advanced reasoning
+   - Deepseek for research tasks
+3. **Continue chatting** with the new model
+
+---
+
+## 🔧 Key Components
+
+### SearXNG Integration
+
+Marina AI uses **SearXNG**, a privacy-respecting metasearch engine that:
+
+- Aggregates results from multiple search engines
+- Protects user privacy (no tracking)
+- Provides unbiased, comprehensive results
+- Supports custom filtering and ranking
+
+**Setup SearXNG:**
+
+```bash
+docker pull searxng/searxng
+docker run -d -p 8080:8080 searxng/searxng
+```
+
+### AI Model Integration
+
+| Model | Provider | Best For | Response Time |
+|-------|----------|----------|---------------|
+| GPT-3.5 | OpenAI | General queries, conversations | Fast |
+| Claude-3-7-sonnet | AWS Bedrock | Complex reasoning, analysis | Medium |
+| Deepseek | OpenRouter | Research, technical topics | Medium |
+
+### Architecture Overview
+
+```
+┌─────────────┐      ┌──────────────┐      ┌─────────────┐
+│   User      │─────▶│  Flask/Next  │─────▶│   AI Models │
+│  Interface  │      │   Backend    │      │   (APIs)    │
+└─────────────┘      └──────────────┘      └─────────────┘
+                            │
+                            ▼
+                     ┌──────────────┐
+                     │   SearXNG    │
+                     │Search Engine │
+                     └──────────────┘
+```
+
+---
+
+## 🎨 Customization
+
+### Changing Themes
+
+Edit the CSS variables in `webui/app.html` or theme configuration in Next.js:
+
+```css
+:root {
+  --primary-color: #51e2f5;
+  --secondary-color: #ffa8b6;
+  --background: #f7f7f8;
+  --text-color: #23272f;
 }
+```
 
-h1, h2, h3 {
-  font-family: 'Inter', sans-serif;
-  font-weight: 600;
-}
+### Adding New AI Models
 
-code {
-  font-family: 'Fira Code', monospace;
-  font-size: 0.9rem;
-}
+1. Add model configuration in `agent/prompt.py`
+2. Implement API integration
+3. Update UI model selector
+4. Test thoroughly
 
-div:hover {
-  transform: translateY(-2px);
-  transition: transform 0.2s;
-}
+---
 
-@media (max-width: 768px) {
-  .container {
-    padding: 10px;
-  }
-}
-</style>
+## 🧪 Development
 
-<div class="landing-container" id="landingPage">
-    <!-- Landing page with hero section -->
+### Running Tests
+
+```bash
+# Python tests
+pytest tests/
+
+# Next.js tests
+cd nextjs && npm test
+```
+
+### Building for Production
+
+```bash
+# Flask version
+gunicorn app:app
+
+# Next.js version
+cd nextjs && npm run build && npm start
+```
+
+---
+
+## 🔮 Roadmap
+
+- [x] Basic search functionality
+- [x] Multi-model AI integration
+- [x] Voice command support
+- [x] Mobile-responsive design
+- [ ] **File upload and analysis**
+- [ ] **Collaboration features** (shared chats)
+- [ ] **Browser extension**
+- [ ] **API access for developers**
+- [ ] **Custom model training**
+- [ ] **Offline mode**
+- [ ] **Plugin system**
+
+---
+
+## 🤝 Contributing
+
+We welcome contributions! Please see [CONTRIBUTING.md](CONTRIBUTING.md) for details.
+
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
+
+---
+
+## 📄 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+---
+
+## 🙏 Acknowledgments
+
+- [SearXNG](https://github.com/searxng/searxng) for privacy-respecting search
+- [OpenAI](https://openai.com/) for GPT models
+- [Anthropic](https://www.anthropic.com/) for Claude
+- [OpenRouter](https://openrouter.ai/) for model aggregation
+- All our amazing contributors
+
+---
+
+## 📞 Support
+
+- **Documentation**: [docs.marina-ai.com](https://docs.marina-ai.com)
+- **Issues**: [GitHub Issues]('https://github.com/PrathameshUpreti/Marina.git/issues)
+- **Discussions**: [GitHub Discussions]('https://github.com/PrathameshUpreti/Marina.git/discussions)
+- **Email**: prathameshuprti408@gmail.com
+
+---
+
+<div align="center">
+
+**Made with ❤️ by the Marina AI Team**
+
+⭐ Star us on GitHub — it motivates us a lot!
+
+[Website](https://marina-ai.com) • [Documentation](https://docs.marina-ai.com) • [Blog](https://blog.marina-ai.com)
+
 </div>
-
-<div class="chat-container" id="chatContainer">
-    <!-- Main chat interface -->
-</div> 
