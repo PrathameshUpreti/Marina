@@ -22,7 +22,7 @@ interface Model {
 interface CodeProps {
   inline?: boolean;
   className?: string;
-  children: React.ReactNode;
+  
   [key: string]: any;  
 }
 
