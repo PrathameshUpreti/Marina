@@ -10,8 +10,11 @@ sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 from agent.llm_search import llm_serch_function,get_llm
 from agent.research import Research 
 
+
 app = Flask(__name__)
 CORS(app, resources={r"/*": {"origins": "*", "allow_headers": ["Content-Type"]}})
+
+
 
 @app.route("/search", methods=["POST"])
 def search():
@@ -24,7 +27,6 @@ def search():
 
     result = llm_serch_function(query,model_provider=model_provider)
     return jsonify({"response": result})
-
 
 @app.route("/reason", methods=["POST"])
 def reason():

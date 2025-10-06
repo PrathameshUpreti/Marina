@@ -5,6 +5,7 @@ import time
 
 CFG = Config()
 
+# Set up OpenAI client in the compatible way
 openai.api_key = CFG.openai_api_key
 #openai.api_base = CFG.openai_api_base
 
@@ -62,18 +63,13 @@ def llm_response(model,
     # Try to generate a response with retries
     for attempt in range(retry_count):
         try:
-            return openai.ChatCompletion.create(
+            response = openai.ChatCompletion.create(
                 model=model,
                 messages=messages,
                 temperature=temperature,
                 max_tokens=max_tokens,
-            ).choices[0].message["content"]
-        except openai.error.RateLimitError:
-            if attempt < retry_count - 1:
-                print(f"Rate limit exceeded. Retrying in {2 ** attempt} seconds...")
-                time.sleep(2 ** attempt)  # Exponential backoff
-            else:
-                return "I apologize, but I'm currently experiencing high demand. Please try again with a shorter query or wait a moment before trying again."
+            )
+            return response.choices[0].message["content"]
         except Exception as e:
             print(f"Error in LLM response: {str(e)}")
             if attempt < retry_count - 1:
@@ -103,7 +99,7 @@ def llm_stream_response(model,
                 max_tokens=max_tokens,
                 stream=True,
         ):
-            content = chunk["choices"][0].get("delta", {}).get("content")
+            content = chunk["choices"][0]["delta"].get("content")
             if content is not None:
                 response += content
                 yield response

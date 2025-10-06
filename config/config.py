@@ -1,7 +1,6 @@
 """Configuration class to store the state of bools for different scripts access."""
 import os
-
-import openai
+from openai import OpenAI
 from colorama import Fore
 from dotenv import load_dotenv
 
@@ -39,7 +38,10 @@ class Config(metaclass=Singleton):
 
         self.memory_backend = os.getenv("MEMORY_BACKEND", "local")
         # Initialize the OpenAI API client
-        openai.api_key = self.openai_api_key
+        if self.openai_api_key:
+            self.client = OpenAI(api_key=self.openai_api_key)
+        else:
+            self.client = None
 
     def set_fast_llm_model(self, value: str) -> None:
         """Set the fast LLM model value."""
@@ -64,6 +66,7 @@ class Config(metaclass=Singleton):
     def set_openai_api_key(self, value: str) -> None:
         """Set the OpenAI API key value."""
         self.openai_api_key = value
+       
 
     def set_debug_mode(self, value: bool) -> None:
         """Set the debug mode value."""
