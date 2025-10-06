@@ -23,6 +23,7 @@ interface CodeProps {
   inline?: boolean;
   className?: string;
   children: React.ReactNode;
+  [key: string]: any;  
 }
 
 const getSearchTypeLabel = (type: SearchType): string => {
